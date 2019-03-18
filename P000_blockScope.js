@@ -14,7 +14,7 @@
     }
     console.log(a); // ReferenceError: a is not defined
     
-
+ddd
 
 (function (){
     var aa=10;
