@@ -49,11 +49,11 @@ function foo(){
 //자바스크립트 엔진이 함수 선언을 끌어올린다. 
 
 
-
+/*
 foo1(); 
 var foo1 = function (){
     console.log("HelloWorld"); 
-} 
+} */
 //err 발생 
 //이 구문이 실행되지 않는 부분은 
 //함수 호이스팅은 함수를 끌어올리지만 변수의 값은 끌어올리지 않는다. 
