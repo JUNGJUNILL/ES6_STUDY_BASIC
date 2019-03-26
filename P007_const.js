@@ -39,8 +39,8 @@ a=20;
 //a는 1000번 주소의 20이라는 값을 참조 
 
 
-console.log(a); 
-console.log(b); 
+console.log("a=> ",a); 
+console.log("b=> ",b); 
 //b는 a=20; 이라는 재할당된 a를 참조하는 것이 아니다. 
 
 /*
