@@ -118,7 +118,7 @@ const createCollection = {
                 })
                 return m; 
         },
-]             
+          
 
         //이건 잘 모르겠다. 
         WMap(keys,...vals){
