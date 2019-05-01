@@ -8,12 +8,25 @@ var ojb = {
 
 }
 
+
+for(const e in ojb){
+
+    console.log(e + " : " + ojb[e]); 
+
+}
+
 const aaa = 10; 
 const bbb = 20; 
 
 const obj01 = {
     aaa, 
     bbb 
+    //이런식으로 프로퍼티 축약을 할 수 있다. 
+}
+
+for(const e in obj01){
+
+    console.log(obj01[e]); 
 
 }
 
@@ -146,3 +159,70 @@ var obj04 = {
 
 }
 console.log(obj04)
+
+
+
+
+
+//own property enumeration order(고정된 프로퍼티 열거 순서)
+const obj05 = {
+
+    c: 1,
+    2: 2,
+    a: 3,
+    0: 4, 
+    b: 5,
+    1: 6
+
+
+}
+
+const keys1 = []; 
+for(const key in obj05){ //obj05의 프로퍼티는 key 
+    keys1.push(key); 
+}
+console.log(keys1); //프로퍼티의 나열 순서가 숫자가 먼저 나옴(오름차순)+ 문자는 입력한 순서대로 
+// ["0", "1", "2", "c", "a", "b"]
+
+console.log(Object.keys(obj05)); //객체의 프로퍼티를 배열로 만들어주는 함수 Object.key
+//["0", "1", "2", "c", "a", "b"]
+
+console.log(Object.getOwnPropertyNames(obj05)); 
+//["0", "1", "2", "c", "a", "b"]
+
+
+const obj06 = {
+
+        [Symbol('2')]  : true, 
+        '01' : true,
+        '10' : true,         
+        '2'  : true,
+        '0'  : true,
+        '02' : true,
+        [Symbol('1')]  : true
+
+}
+
+const keys2 = []; 
+for(const key in obj06){ //obj05의 프로퍼티는 key 
+    keys2.push(key); 
+}
+console.log(keys2); //프로퍼티는 일단 문자열인데... 0으로 시작하는 숫자는 문자열로 인식하고.. 그렇지 않으면 숫자로 인식한다... 
+//["0", "2", "10", "01", "02"]
+
+const obj07 = Object.assign({},obj05,obj06); 
+const keys3 = []; 
+
+for(const key in obj07){
+
+    keys3.push(key); 
+}
+
+
+console.log(keys3); 
+console.log(Object.keys(obj07)); 
+console.log(Object.getOwnPropertyNames(obj07)); 
+console.log(Reflect.ownKeys(obj07));
+
+//결론 : 숫자를 asc , 문자열을 입력된 순서, 심볼을 입력된 순서. 
+//(분명이걸 이용해서 뭔가를 할 수 있다는 확신이 생김)
