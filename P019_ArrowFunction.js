@@ -22,6 +22,11 @@ var d = function(x){
 //객체 반환시 ({}), 프로퍼티 축약 ㅇㅇ  
 var e = x => ({x}); 
 
+//객체 반환시 
+const f = () => ({
+    a:1, 
+    b:2
+})
 
 
 var f = function(a){
@@ -54,6 +59,27 @@ const obj = {
       };
 
       b.call(this); //에로우 펑션은 따로 바인딩 해줄 필요가 없다. 
+    }
+}
+
+obj.a();
+
+
+const obj = {
+
+    a() {
+      let self  = this; 
+      console.log(this) ; //<-이 this는 obj이다.
+      
+      const b =function (){
+
+        console.log(self); //<-이 this는 전역객체 window이다. 
+                           //함수라는 것이 실행되는 순간 this를 바인딩 한다.
+                           //하지만 이 부분의 this 같은 경우는 바인딩 할게 없어서 전역 객체 window를 바인딩 한다.
+
+      };
+
+      b(); //에로우 펑션은 따로 바인딩 해줄 필요가 없다. 
     }
 }
 
@@ -105,15 +131,44 @@ const obj02 = {
 obj02.getTotal(); 
 obj02
 
+
+function sum(...arg){
+    console.log(this); 
+    return arg.reduce( (p,c) => p+c ); 
+}
+sum(1,2,3,4,5); 
+
+sum.call({},1,2,3,4,5)
+//빈 객체로 this 바인딩 함 
+
+
+const sum2= (...arg) =>{
+    console.log(this); 
+    return arg.reduce( (p,c) => p+c ); 
+}
+sum2(1,2,3,4,5); 
+
+sum2.call({},1,2,3,4,5)
+//빈 객체로 this 안함 , 에로우 펑션은 this를 바인딩 하지 않는다. 
+
+
+
+
+
+
+
+
+
 //-----------------------------------------------------------------------------^_^
 const b = {
 
     name : "호호", 
 
-    bb () {
-        const b = x => this.name; 
-        console.log(b()); 
-    }
+    bb () { //concise method  메서드로서만... 
+        return this.name; 
+    },
+    a: x=> {this.name;} //arrow function 함수로서만...
+                        //메서드 내에서 같은 this를 사용하기 위해서 쓸 때 , 내부 함수로서 쓸 떄 사용한다. 
 
 
 }
@@ -125,17 +180,21 @@ const bb = {
 
     name : "하하",
     bb () {
-        return this.name; 
+        
+        const b =x => {
+            return this.name; 
+            //arrow function 함수로서만...
+            //메서드 내에서 같은 this를 사용하기 위해서 쓸 때 , 내부 함수로서 쓸 떄 사용한다. 
+        }
+        console.log(b()); 
     },
-
-    a: x=> {
-        return this.name; 
-    }
 
 }
 
 bb.bb()
  //"하하"
-bb.a()
-// ""
+
+
+
+
 //이 말은 에로우 펑션은 this를 바인딩하지 않으므로 메소드로서의 역할이 아닌 함수로서의 역할을 한다. 
