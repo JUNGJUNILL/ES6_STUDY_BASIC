@@ -89,12 +89,12 @@ obj.a();
 //에로우 펑션은 따로 바인딩 해 줄 필요가 없다. 
 //에로우 펑션은 블록스코프가 아닌 '함수 스코프'를 생성한다. 다만 , 실행컨텍스트 생성 시 this를 바인딩 하지 않는다. 
 const obj = {
-
+        name : "정준일",
     a() {
-      console.log(this) ; //<-이 this는 obj이다.
+      console.log(this.name) ; //<-이 this는 obj이다.
         
       const b = () =>{
-          console.log(this); 
+          console.log(this.name); 
       }
 
       b(); 
