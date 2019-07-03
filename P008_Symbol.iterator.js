@@ -6,7 +6,7 @@ var iterator1 = array1.entries();
 for(var i=0; i<array1.length; i++){
 
     //해당 value의 키 추출
-    //console.log(iteratoer1.next().value[0]); 
+    //console.log(iterator1.next().value[0]); 
 
     //해당 value 추출
     console.log(iterator1.next()); 

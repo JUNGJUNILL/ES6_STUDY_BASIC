@@ -37,8 +37,9 @@ console.log(Person.fullName.apply(Person1));
 
 
 //★★★
-//apply(this, array); array는 해당 함수.apply 시 
+//함수.apply(this, array); array는 해당 함수.apply 시 
 //해당 함수의 파라메터 값이 된다. 
+//2번째 인자인 array는 해당 함수의 파라메터값이 될 수 있다. 
 
 let o = {x : 15}; 
 function f(a,b){

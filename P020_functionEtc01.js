@@ -15,7 +15,7 @@ console.log(d.name);
 const e = {
 
         om1 : function () {},
-        om2 (){},
+        om2 (){}, 
         om3 : () => {}
 
 
