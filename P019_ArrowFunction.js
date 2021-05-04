@@ -103,7 +103,7 @@ const obj = {
 
 obj.a();
 
-/*
+/*!
 const obj01 = {
 
     grades : [80,90,100], 
